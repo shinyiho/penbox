@@ -1,0 +1,19 @@
+{
+  "name": "penbox",
+  "version": "0.0.1",
+  "description": "Canvas project.",
+  "scripts": {
+    "start": "parcel template.html --open",
+    "build": "parcel build template.html"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "parcel-bundler": "^1.12.4",
+    "file-saver": "^2.0.5",
+    "@babel/core": "^7.12.3"
+  },
+  "engines": {
+    "node": "12.x"
+	}
+
+}
