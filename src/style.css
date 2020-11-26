@@ -31,12 +31,20 @@ body {
   text-align: center;
   text-decoration: none;
   font-size: 12px;
-  margin: -0.4vw;
+  margin: -0.3vw;
 }
 .button:hover {
   transform: scale(1.1);
   transition: 0.3s;
   transition-timing-function: ease-in-out;
+}
+#undo {
+  top: -1.5vh;
+  background-color: #f2a7cc;
+}
+#redo {
+  top: -1.5vh;
+  background-color: #f2a7cc;
 }
 #download {
   background-color: #f2a7cc;

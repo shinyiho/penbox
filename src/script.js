@@ -45,6 +45,29 @@ let y;
 let lastx;
 let lasty;
 
+//undoredo
+let undoStack = [];
+let redoStack = [];
+pushImageData();
+//undo
+function pushImageData() {
+  undoStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+}
+document.getElementById("undo").addEventListener("click", () => {
+  if (undoStack.length > 1) {
+    redoStack.push(undoStack.pop());
+    ctx.putImageData(undoStack[undoStack.length - 1], 0, 0);
+  }
+});
+//redo
+document.getElementById("redo").addEventListener("click", () => {
+  if (redoStack.length) {
+    let targetImageData = redoStack.pop();
+    ctx.putImageData(targetImageData, 0, 0);
+    undoStack.push(targetImageData);
+  }
+});
+
 //randomnumber
 function random(size) {
   return (Math.random() - 0.5) * size;
@@ -135,6 +158,7 @@ canvas.addEventListener("mousemove", (e) => {
 });
 canvas.addEventListener("mouseup", () => {
   mousedown = false;
+  pushImageData();
 });
 canvas.addEventListener("mouseout", () => {
   mousedown = false;
@@ -157,6 +181,7 @@ canvas.addEventListener("touchmove", (e) => {
   lasty = touch.clientY;
 });
 canvas.addEventListener("touchend", () => {
+  pushImageData();
   //  lastx = touch.clientX;
   // lasty = touch.clientY;
 });
