@@ -6,7 +6,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: sans-serif;
-  font-size: 50px;
+  overflow: hidden;
 }
 
 #canvas {
@@ -20,33 +20,36 @@ body {
   z-index: -2;
 }
 .button {
-  position: relative;
-  top: -2vh;
   box-shadow: 1px 1px 2px #f55b98;
   background-color: #e61266;
-  border-radius: 1vw;
   border: none;
   color: white;
   padding: 0.3vw 0.6vw;
   text-align: center;
   text-decoration: none;
   font-size: 12px;
-  margin: -0.3vw;
+  border-radius: 15px;
+  width: 60px;
+  height: 40px;
+  margin: 2px;
 }
 .button:hover {
   transform: scale(1.1);
   transition: 0.3s;
   transition-timing-function: ease-in-out;
 }
-#undo {
-  top: -1.5vh;
+
+#buttons-div {
+  height: 100px;
+}
+
+#history-div button {
   background-color: #f2a7cc;
 }
-#redo {
-  top: -1.5vh;
-  background-color: #f2a7cc;
-}
-#download {
-  background-color: #f2a7cc;
-  margin: 1vw;
+#history-div {
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

@@ -52,15 +52,20 @@ pushImageData();
 //undo
 function pushImageData() {
   undoStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+  redoStack = [];
 }
-document.getElementById("undo").addEventListener("click", () => {
+document.getElementById("undo").addEventListener("click", (e) => {
+  e.preventDefault();
   if (undoStack.length > 1) {
     redoStack.push(undoStack.pop());
+
     ctx.putImageData(undoStack[undoStack.length - 1], 0, 0);
   }
 });
+
 //redo
-document.getElementById("redo").addEventListener("click", () => {
+document.getElementById("redo").addEventListener("click", (e) => {
+  e.preventDefault();
   if (redoStack.length) {
     let targetImageData = redoStack.pop();
     ctx.putImageData(targetImageData, 0, 0);
@@ -78,8 +83,9 @@ function randomP(size) {
 //draw with different open
 const penbox = [ink1, ink2, ink3, ink4, ink5, ink6];
 let penchosen = penbox[0];
-document.querySelectorAll("#pens").forEach((pen) => {
+document.querySelectorAll(".pens").forEach((pen) => {
   pen.addEventListener("click", (e) => {
+    e.preventDefault();
     console.log(penbox[e.target.getAttribute("no")]);
     penchosen = penbox[e.target.getAttribute("no")];
   });
